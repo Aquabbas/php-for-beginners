@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Document</title>
+    <title>Demo</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <link href="css/style.css" rel="stylesheet"> -->
@@ -18,20 +18,20 @@
 </head>
 
 <body>
-    <?php
-    $name = "Dark Matter";
-    $read = false;
+    <h1>List of People</h1>
 
-    if ($read) {
-        $message = "You have read $name";
-    } else {
-        $message = "You have NOT read $name";
-    }
+    <?php
+    $people = [
+        "Scooby Werkstatt",
+        "David Goggins",
+        "Andrew Huberman"
+    ]
     ?>
-    <h1>
-        <!-- <?php echo $message; ?> -->
-        <?= $message ?>
-    </h1>
+    <ul>
+        <?php foreach ($people as $person) : ?>
+            <li><?= $person ?></li>
+        <?php endforeach; ?>
+    </ul>
 </body>
 
 </html>
