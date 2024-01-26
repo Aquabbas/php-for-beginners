@@ -22,14 +22,31 @@
 
     <?php
     $people = [
-        "Scooby Werkstatt",
-        "David Goggins",
-        "Andrew Huberman"
+        [
+            "name" => "Scooby Werkstatt",
+            "profession" => "Software Engineer & Bodybuilder",
+            "website" => "https://www.scoobysworkshop.com"
+        ],
+        [
+            "name" => "David Goggins",
+            "profession" => "Long Distance Runnner",
+            "website" => "https://davidgoggins.com"
+
+        ],
+        [
+            "name" => "Andrew Huberman",
+            "profession" => "neuroscientist",
+            "website" => "https://www.hubermanlab.com"
+        ]
     ]
     ?>
     <ul>
         <?php foreach ($people as $person) : ?>
-            <li><?= $person ?></li>
+            <li>
+                <a href="<?= $person['website'] ?>" target="_blank">
+                    <?= $person['name']; ?> (<?= $person['profession']; ?>)
+                </a>
+            </li>
         <?php endforeach; ?>
     </ul>
 </body>
