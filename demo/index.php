@@ -25,26 +25,45 @@
         [
             "name" => "Scooby Werkstatt",
             "profession" => "Software Engineer & Bodybuilder",
+            "birthDate" => 1961,
             "website" => "https://www.scoobysworkshop.com"
         ],
         [
             "name" => "David Goggins",
             "profession" => "Long Distance Runnner",
+            "birthDate" => 1975,
             "website" => "https://davidgoggins.com"
 
         ],
         [
             "name" => "Andrew Huberman",
             "profession" => "neuroscientist",
+            "birthDate" => 1975,
             "website" => "https://www.hubermanlab.com"
         ]
-    ]
+    ];
+
+    function filterByBirthDate($people, $birthDate)
+    {
+        $filteredPerson = [];
+
+        foreach ($people as $person) {
+            if ($person['birthDate'] === $birthDate) {
+                $filteredPerson[] = $person;
+            }
+        }
+        return $filteredPerson;
+    }
     ?>
     <ul>
-        <?php foreach ($people as $person) : ?>
+        <?php foreach (filterByBirthDate($people, 1961) as $person) : ?>
             <li>
                 <a href="<?= $person['website'] ?>" target="_blank">
-                    <?= $person['name']; ?> (<?= $person['profession']; ?>)
+
+                    <?= $person['name']; ?>,
+                    (<?= $person['profession']; ?>),
+                    Date of Birth: <?= $person['birthDate']; ?>
+
                 </a>
             </li>
         <?php endforeach; ?>
