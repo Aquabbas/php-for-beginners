@@ -30,33 +30,48 @@
         ],
         [
             "name" => "David Goggins",
-            "profession" => "Long Distance Runnner",
+            "profession" => "Long Distance Runner",
             "birthDate" => 1975,
             "website" => "https://davidgoggins.com"
 
         ],
         [
             "name" => "Andrew Huberman",
-            "profession" => "neuroscientist",
+            "profession" => "Neuroscientist",
             "birthDate" => 1975,
             "website" => "https://www.hubermanlab.com"
         ]
     ];
 
-    function filterByBirthDate($people, $birthDate)
+    /*
+    function filter($items, $fn)
     {
-        $filteredPerson = [];
+        $filteredItems = [];
 
-        foreach ($people as $person) {
-            if ($person['birthDate'] === $birthDate) {
-                $filteredPerson[] = $person;
+        foreach ($items as $item) {
+            if ($fn($item)) {
+                $filteredItems[] = $item;
             }
         }
-        return $filteredPerson;
+        return $filteredItems;
     }
+        */
+
+    /*
+    $filteredBirths = filter($people, function ($person) {
+        return $person['birthDate'] < 1975;
+    });
+        */
+    $filteredBirths = array_filter($people, function ($person) {
+        return ($person['birthDate'] === 1975 && $person['profession'] === "Long Distance Runner");
+    });
+
     ?>
+
+
+
     <ul>
-        <?php foreach (filterByBirthDate($people, 1961) as $person) : ?>
+        <?php foreach ($filteredBirths as $person) : ?>
             <li>
                 <a href="<?= $person['website'] ?>" target="_blank">
 
