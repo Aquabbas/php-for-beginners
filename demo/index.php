@@ -1,13 +1,14 @@
 <?php
 
 require('functions.php');
+// require('router.php');
 require('Database.php');
 
-// require('router.php');
+$config = require('config.php');
 
-$db = new Database();
+$db = new Database($config['database']);
 
-$posts = $db->query("SELECT * FROM posts;")->fetchAll(PDO::FETCH_ASSOC);
+$posts = $db->query("SELECT * FROM posts;")->fetchAll();
 
 dd($posts);
 
