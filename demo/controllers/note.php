@@ -9,10 +9,21 @@ $db = new Database($config['database']);
 // 3- Pass the data to the viewer
 
 $heading = 'Post';
+$currentUserId = 1;
 
 $id = $_GET['id'];
 
-$note = $db->query('SELECT * FROM notes WHERE id = :id', ['id' => $id])->fetch();
+$note = $db->query('SELECT * FROM notes WHERE id = :id', [
+    'id' => $id
+])->fetch();
+
+if (!$note) {
+    abort();
+}
+
+if ($note['user_id'] !== $currentUserId) {
+    abort(Response::FORBIDDEN);
+}
 
 // dd($notes);
 
