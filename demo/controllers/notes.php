@@ -10,7 +10,7 @@ $db = new Database($config['database']);
 
 $heading = 'My Posts';
 
-$notes = $db->query('SELECT * FROM notes WHERE user_id = 1')->fetchAll();
+$notes = $db->query('SELECT * FROM notes WHERE user_id = 1')->get();
 
 // dd($notes);
 

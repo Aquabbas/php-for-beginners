@@ -15,15 +15,13 @@ $id = $_GET['id'];
 
 $note = $db->query('SELECT * FROM notes WHERE id = :id', [
     'id' => $id
-])->fetch();
+])->findOrFail();
 
-if (!$note) {
-    abort();
-}
+authorize($note['user_id'] === $currentUserId);
 
-if ($note['user_id'] !== $currentUserId) {
-    abort(Response::FORBIDDEN);
-}
+// if ($note['user_id'] !== $currentUserId) {
+//     abort(Response::FORBIDDEN);
+// }
 
 // dd($notes);
 
