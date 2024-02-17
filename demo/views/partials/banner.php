@@ -7,6 +7,7 @@
                     urlIs('/about') ||
                     urlIs('/notes') ||
                     urlIs('/contact') ||
+                    urlIs('/notes/create') ||
                     urlIs('/403') ||
                     (isset($_GET['id']) && urlIs('/note?id=' . $_GET['id'])) ?
                     $heading : '404'
