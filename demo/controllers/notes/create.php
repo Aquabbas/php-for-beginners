@@ -1,14 +1,13 @@
 <?php
 
-require('Validator.php');
+require base_path('core/Validator.php');
 
-$config = require('config.php');
+$config = require base_path('config.php');
 $db = new Database($config['database']);
 
-$heading = 'Create New Note';
+$errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $errors = [];
 
     if (!Validator::string($_POST['body'], 1, 1000)) {
         $errors['body'] = 'A body of no more than 1,000 characers is required!';
@@ -23,4 +22,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-require 'views/notes/create.view.php';
+view("notes/create.view.php", [
+    'heading' => 'Create New Note',
+    'errors' => $errors
+]);
+
+
+
+/** 
+ * Controllers can:
+ * ---------------------------------
+ * 1- Accept requests from the user
+ * 2- Delegate and prepare Data 
+ * 3- Pass the data to the viewer
+ * ---------------------------------
+ * */

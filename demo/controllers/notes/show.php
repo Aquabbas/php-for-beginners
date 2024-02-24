@@ -1,14 +1,8 @@
 <?php
 
-$config = require('config.php');
+$config = require base_path('config.php');
 $db = new Database($config['database']);
 
-// Controllers can: 
-// 1- Accept requests from the user 
-// 2- Delegate and prepare Data 
-// 3- Pass the data to the viewer
-
-$heading = 'Post';
 $currentUserId = 1;
 
 $id = $_GET['id'];
@@ -25,4 +19,18 @@ authorize($note['user_id'] === $currentUserId);
 
 // dd($notes);
 
-require "views/notes/show.view.php";
+view("notes/show.view.php", [
+    'heading' => 'Post',
+    'note' => $note
+]);
+
+
+
+/** 
+ * Controllers can:
+ * ---------------------------------
+ * 1- Accept requests from the user
+ * 2- Delegate and prepare Data 
+ * 3- Pass the data to the viewer
+ * ---------------------------------
+ * */
