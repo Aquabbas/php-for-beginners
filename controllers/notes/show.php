@@ -7,26 +7,33 @@ $db = new Database($config['database']);
 
 $currentUserId = 1;
 
-$id = $_GET['id'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Form was submitted. Delete the current note.
+    $note = $db->query('SELECT * FROM notes WHERE id = :id', [
+        'id' => $_GET['id']
+    ])->findOrFail();
 
-$note = $db->query('SELECT * FROM notes WHERE id = :id', [
-    'id' => $id
-])->findOrFail();
+    authorize($note['user_id'] === $currentUserId);
 
-authorize($note['user_id'] === $currentUserId);
+    $db->query('delete from notes where id = :id', [
+        'id' => $_GET['id']
+    ]);
 
-// if ($note['user_id'] !== $currentUserId) {
-//     abort(Response::FORBIDDEN);
-// }
+    header('location: /notes');
+    exit();
+} else {
+    // dd($_SERVER);
+    $note = $db->query('SELECT * FROM notes WHERE id = :id', [
+        'id' => $_GET['id']
+    ])->findOrFail();
 
-// dd($notes);
+    authorize($note['user_id'] === $currentUserId);
 
-view("notes/show.view.php", [
-    'heading' => 'Post',
-    'note' => $note
-]);
-
-
+    view("notes/show.view.php", [
+        'heading' => 'Post',
+        'note' => $note
+    ]);
+}
 
 /** 
  * Controllers can:
