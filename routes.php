@@ -8,4 +8,8 @@ $router->get('/contact', 'controllers/contact.php');
 // Routes related to Notes
 $router->get('/notes', 'controllers/notes/index.php');
 $router->get('/note', 'controllers/notes/show.php');
+$router->delete('/note', 'controllers/notes/destroy.php');
+$router->post('/note', 'controllers/notes/destroy.php'); // Handle POST requests for deleting a note
+
 $router->get('/notes/create', 'controllers/notes/create.php');
+$router->post('/notes', 'controllers/notes/store.php');

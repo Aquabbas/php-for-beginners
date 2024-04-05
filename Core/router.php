@@ -20,27 +20,27 @@ class Router
 
     public function get($uri, $controller)
     {
-        $this->get('GET', $uri, $controller);
+        $this->add('GET', $uri, $controller);
     }
 
     public function post($uri, $controller)
     {
-        $this->get('POST', $uri, $controller);
+        $this->add('POST', $uri, $controller);
     }
 
     public function delete($uri, $controller)
     {
-        $this->get('DELETE', $uri, $controller);
+        $this->add('DELETE', $uri, $controller);
     }
 
     public function patch($uri, $controller)
     {
-        $this->get('PATCH', $uri, $controller);
+        $this->add('PATCH', $uri, $controller);
     }
 
     public function put($uri, $controller)
     {
-        $this->get('PUT', $uri, $controller);
+        $this->add('PUT', $uri, $controller);
     }
 
     public function route($uri, $method)
