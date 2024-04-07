@@ -8,8 +8,11 @@
                     urlIs('/notes') ||
                     urlIs('/contact') ||
                     urlIs('/notes/create') ||
+                    urlIs('/note/edit') ||
                     urlIs('/403') ||
-                    (isset($_GET['id']) && urlIs('/note?id=' . $_GET['id'])) ?
+                    (isset($_GET['id']) &&
+                        (urlIs('/note?id=' . $_GET['id']) ||
+                            urlIs('/note/edit?id=' . $_GET['id']))) ?
                     $heading : '404'
                 ?>
             </center>
