@@ -6,7 +6,7 @@ $router->get('/about', 'controllers/about.php');
 $router->get('/contact', 'controllers/contact.php');
 
 // Routes related to Notes
-$router->get('/notes', 'controllers/notes/index.php');
+$router->get('/notes', 'controllers/notes/index.php')->only('auth');
 $router->get('/note', 'controllers/notes/show.php');
 $router->delete('/note', 'controllers/notes/destroy.php');
 $router->post('/note', 'controllers/notes/destroy.php'); // Handle POST requests for deleting a note
@@ -18,5 +18,5 @@ $router->post('/note/edit', 'controllers/notes/update.php');
 $router->get('/notes/create', 'controllers/notes/create.php');
 $router->post('/notes', 'controllers/notes/store.php');
 
-$router->get('/register', 'controllers/registration/create.php');
+$router->get('/register', 'controllers/registration/create.php')->only('guest');
 $router->post('/register', 'controllers/registration/store.php');
