@@ -5,7 +5,7 @@
 <main>
     <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
         <p>
-            <center>Welcome to Aquabbas :D</center>
+            <center>Hello , <?= $_SESSION['user']['email'] ?? 'Guest' ?>! Welcome to Aquabbas :D</center>
         </p>
     </div>
 </main>
