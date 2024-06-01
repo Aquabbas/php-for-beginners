@@ -7,7 +7,7 @@ class Guest
     public function handle()
     {
         // If there is user, then kick out the guest
-        if ($_SESSION['user'] ?? false) {
+        if (isset($_SESSION['user'])) {
             header('location: /');
             exit();
         }

@@ -26,7 +26,7 @@
                     </button>
 
                     <!-- Profile dropdown -->
-                    <?php if ($_SESSION['user'] ?? false) : ?>
+                    <?php if (isset($_SESSION['user'])) : ?>
                         <div class="relative ml-3">
                             <div>
                                 <button type="button" class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
@@ -85,7 +85,7 @@
             <a href="/notes" class="<?= urlIs('/notes') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' ?> block rounded-md px-3 py-2 text-base font-medium">Notes</a>
             <a href="/contact" class="<?= urlIs('/contact') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' ?> block rounded-md px-3 py-2 text-base font-medium">Contact</a>
         </div>
-        <?php if ($_SESSION['user'] ?? false) : ?>
+        <?php if (isset($_SESSION['user'])) : ?>
             <div class="border-t border-gray-700 pb-3 pt-4">
                 <div class="flex items-center px-5">
                     <div class="flex-shrink-0">
