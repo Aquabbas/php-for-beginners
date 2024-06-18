@@ -94,18 +94,19 @@ CREATE TABLE `users` (
 3. Insert values into the database:
 
 ```
-INSERT INTO `notes` (`id`, `body`, `user_id`) VALUES
-(1, 'I use NeoVim btw.', 1),
-(2, 'PHP is awesome!', 2),
-(4, 'I will teach you PHP Laravel.', 2),
-(6, 'Keep learning PHP!', 1),
-(37, 'I\'m going to learn Arch Linux btw', 1);
-```
-
-```
 INSERT INTO `users` (`id`, `email`, `password`) VALUES
 (1, 'abbashayder@hotmail.com', 'cleartext'),
 (2, 'jeffreyway@hotmail.com', 'cleartextw'),
-(15, 'a@a.com', '$2y$10$nR0lwem.RcYJbpBKcDW/te/Hd40cbkJFOgyYYCNcfxsJOGjxj5qfW'),
-(16, 'b@b.com', '$2y$10$iClz26ij5nPAZHQcR5kNduILYo28bVSZSgrOYalwwn6j6J24W0N6m');
+(3, 'a@a.com', '$2y$10$nR0lwem.RcYJbpBKcDW/te/Hd40cbkJFOgyYYCNcfxsJOGjxj5qfW'),
+(4, 'b@b.com', '$2y$10$iClz26ij5nPAZHQcR5kNduILYo28bVSZSgrOYalwwn6j6J24W0N6m');
 ```
+
+```
+INSERT INTO `notes` (`id`, `body`, `user_id`) VALUES
+(1, 'I use NeoVim btw.', 1),
+(2, 'PHP is awesome!', 2),
+(3, 'I will teach you PHP Laravel.', 2),
+(4, 'Keep learning PHP!', 1),
+(5, 'I\'m going to learn Arch Linux btw', 1);
+```
+

@@ -2,7 +2,7 @@
 
 return [
     'database' => [
-        'host' => 'host.docker.internal', // Use the service name defined in docker-compose.yml
+        'host' => 'db', // Use the service name defined in docker-compose.yml
         'port' => 3306,
         'dbname' => 'myapp',
         'charset' => 'utf8mb4',
