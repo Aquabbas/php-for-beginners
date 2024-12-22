@@ -1,74 +1,123 @@
 # Learning PHP Application
 
-This PHP application is built as part of a learning journey to understand PHP from the ground up. It follows a tutorial on [Laracasts](https://laracasts.com/series/php-for-beginners-2023-edition) to build a basic web application using PHP.
+![Dev Environment Preview](/home/abbashayder/Pictures/Screenshots/Screenshot%20from%202024-12-22%2021-48-58.png)
 
-## Purpose
+- This project is a PHP and MySQL application, developed by following the course
+  [PHP for Beginners](https://laracasts.com/series/php-for-beginners-2023-edition)
+  by Jeffrey Way on [laracasts.com](https://laracasts.com). My goal to is to learn
+  the basics of PHP and web development concepts such as routing and templating,
+  which will aid me in professional and personal projects.
 
-The purpose of this project is to learn the PHP programming language and web development concepts such as routing, templating, and working with databases. This knowledge will help me with my daily work @[Odevo](https://odevo.com) and building a new personal website using [Laravel](https://laravel.com/).
+## Requirements
 
-## How to Run
+- To run this application locally, you need to have installed/configured one of the
+  following:
 
-To run this application locally, you will need to have [Docker Desktop](https://www.docker.com/products/docker-desktop) installed on your system.
+  - [Docker Desktop](https://www.docker.com/products/docker-desktop)
+  - [Docker Engine](https://docs.docker.com/engine)
 
-### Running with Docker Desktop
+## Running the Application
 
 1. Clone this repository to your local machine.
 
-```
-git clone https://github.com/Aquabbas/learning-php.git
-```
+   ```Git
+   git clone https://github.com/Aquabbas/learning-php.git
+   ```
 
-2. Navigate to the project directory. 3. Run the following command to build the Docker image:`
+2. Navigate to the project directory:
 
-```
-cd learning-php
-```
+   ```Zsh
+   cd learning-php
+   ```
 
-```
-docker compose up --build
-```
+3. Build the Docker Container/Image:
 
-3. To remove the Docker container, run the following:
+   ```Zsh
+   docker compose up --build
+   ```
 
-```
-docker compose down
-```
+You can now access the application in your web browser at [http://localhost:8080](http://localhost:8080).
 
-4. Access the application in your web browser at [http://localhost:8080](http://localhost:8080).
+## Other handy Docker Commands
 
-### Setting up the Database
+- **Start existing containers for a service**:
 
-#### TablePlus on MacOS & MySQL Workbench on Windows
+  ```Zsh
+  docker compose start
+  ```
 
-1. Open TablePlus/Workbench and connect to your local MySQL database using the following values:
-    - Name (a.k.a. connection name):
-    ```
+- **Stops running containers without removing them**:
+
+  ```Zsh
+  docker compose stop
+  ```
+
+---
+
+- **Start Services**:
+
+  ```Zsh
+  docker compose up
+  ```
+
+- **Stop Services**:
+
+  ```Zsh
+  docker compose down
+  ```
+
+---
+
+### Setting Up the Database
+
+To manage your database, use a `GUI` database application such as
+[TablePlus](https://tableplus.com/download) or
+[MySQL Workbench](https://dev.mysql.com/downloads/workbench).
+
+#### Connection Instructions
+
+- Connect to your local MySQL database using the following settings:
+
+  - **Connection Name:**
+
+    ```Text
     Demo
     ```
-    - Host:
-    ```
+
+  - **Host:**
+
+    ```Text
     127.0.0.1
     ```
-    - Port:
-    ```
+
+  - **Port:**
+
+    ```Text
     3306
     ```
-    - User:
-    ```
+
+  - **User:**
+
+    ```Text
     root
     ```
-    - Password:
-        - Leave it blank (since your `docker-compose.yml` allows an empty password).
-    - Database:
-    ```
+
+  - **Password:**
+
+    - Leave it blank (as your `docker-compose.yml` configuration file allows an
+      empty password)
+
+  - **Database:**
+
+    ```Text
     myapp
     ```
 
 #### Creating the Database Structure
 
-2. Execute the following SQL commands to create the necessary tables (notes & users):
+- Execute the following SQL commands to create the necessary tables (notes & users):
 
-```
+```MySQL
 CREATE TABLE `notes` (
   `id` int NOT NULL AUTO_INCREMENT,
   `body` text NOT NULL,
@@ -79,7 +128,7 @@ CREATE TABLE `notes` (
 ) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 ```
 
-```
+```MySQL
 CREATE TABLE `users` (
   `id` int NOT NULL AUTO_INCREMENT,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
@@ -91,17 +140,17 @@ CREATE TABLE `users` (
 
 #### Populating the Database
 
-3. Insert values into the database:
+- Insert values into the database:
 
-```
+```MySQL
 INSERT INTO `users` (`id`, `email`, `password`) VALUES
-(1, 'abbashayder@hotmail.com', 'cleartext'),
+(1, 'donkeykong@hotmail.com', 'cleartext'),
 (2, 'jeffreyway@hotmail.com', 'cleartextw'),
 (3, 'a@a.com', '$2y$10$nR0lwem.RcYJbpBKcDW/te/Hd40cbkJFOgyYYCNcfxsJOGjxj5qfW'),
 (4, 'b@b.com', '$2y$10$iClz26ij5nPAZHQcR5kNduILYo28bVSZSgrOYalwwn6j6J24W0N6m');
 ```
 
-```
+```MySQL
 INSERT INTO `notes` (`id`, `body`, `user_id`) VALUES
 (1, 'I use NeoVim btw.', 1),
 (2, 'PHP is awesome!', 2),
@@ -110,3 +159,4 @@ INSERT INTO `notes` (`id`, `body`, `user_id`) VALUES
 (5, 'I\'m going to learn Arch Linux btw', 1);
 ```
 
+---
