@@ -1,6 +1,7 @@
 # Learning PHP Application
 
-![Dev Environment Preview](/home/abbashayder/Pictures/Screenshots/Screenshot%20from%202024-12-22%2021-48-58.png)
+![image](https://github.com/user-attachments/assets/6cd4dc88-4411-48f6-943c-216774e78e94)
+
 
 - This project is a PHP and MySQL application, developed by following the course
   [PHP for Beginners](https://laracasts.com/series/php-for-beginners-2023-edition)
