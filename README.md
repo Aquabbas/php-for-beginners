@@ -2,7 +2,6 @@
 
 ![image](https://github.com/user-attachments/assets/6cd4dc88-4411-48f6-943c-216774e78e94)
 
-
 - This project is a PHP and MySQL application, developed by following the course
   [PHP for Beginners](https://laracasts.com/series/php-for-beginners-2023-edition)
   by Jeffrey Way on [laracasts.com](https://laracasts.com). My goal to is to learn
@@ -39,7 +38,7 @@
 
 You can now access the application in your web browser at [http://localhost:8080](http://localhost:8080).
 
-## Other handy Docker Commands
+## Other Handy Docker Commands
 
 - **Start existing containers for a service**:
 
@@ -113,6 +112,47 @@ To manage your database, use a `GUI` database application such as
     ```Text
     myapp
     ```
+
+#### Connecting to the database through `Neovim`
+
+- If you use `Neovim`, you can use the [Vim Dadbod UI](https://github.com/kristijanhusak/vim-dadbod-ui)
+  plugin to connect and query the database, using the following `Lazyzim` configuration:
+
+```Lua
+return {
+    "kristijanhusak/vim-dadbod-ui",
+    dependencies = {
+        {
+            "tpope/vim-dadbod",
+            lazy = true,
+        },
+        {
+            "kristijanhusak/vim-dadbod-completion",
+            ft = {
+                "sql",
+                "mysql",
+                "plsql",
+            },
+            lazy = true, -- Optional
+        },
+    },
+    cmd = {
+        "DBUI",
+        "DBUIToggle",
+        "DBUIAddConnection",
+        "DBUIFindBuffer",
+    },
+    init = function()
+        -- Your DBUI configuration
+        vim.g.db_ui_use_nerd_fonts = 1
+
+        -- Define database connections
+        vim.g.dbs = {
+            { name = "Demo", url = "mysql://root@127.0.0.1:3306/myapp" },
+        }
+    end,
+}
+```
 
 #### Creating the Database Structure
 
